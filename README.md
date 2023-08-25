@@ -7,7 +7,7 @@ Welcome to Bot Battlr, the one and only spot in the known universe where you can
 The user interface of Bot Battlr is designed to be intuitive and easy to use. As a user of this application you can:
 
 1. Browse through a list of robots, 
-2. View a robot's details# Getting Started with Create React App
+2. View a robot's details.
 3. Enlist a bot into your army by clicking on a button. 
    
 The app fetches data from a local server running JSON DB server.
