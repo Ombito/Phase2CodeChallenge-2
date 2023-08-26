@@ -2,6 +2,18 @@ const BotCollection = ({bots}) => {
 
     const addBot = (e) => {
         console.log('add')
+        let botObject = {
+            "id"={bots.id}
+            "name"={bots.name}
+            health=
+            damage=
+            armor=
+            bot_class=
+            catchphrase=
+            avatar_url=
+            created_at=
+            updated_at=
+        }
         e.preventDefault();
         fetch('http://localhost:8001/my-bots', {
             method: "POST",
