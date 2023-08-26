@@ -1,23 +1,27 @@
-const BotArmy = ({ bots }) => {
+import { useState, useEffect } from 'react';
 
-    const releaseBot = () => {
-        console.log('bot')
-    }
+const BotArmy = () => {
+    const [ newbots, setNewbots ] = useState([])
+
+    useEffect(() => {
+        fetch('http://localhost:8001/my-bots')
+        .then(res => res.json())
+        .then((data) => setNewbots(data))
+    }, [])
+
     return (
         <div>
-            {bots.map((bot) => (
+            {newbots.map((bot) => (
                 <div>
-                    console.log(bot)
-                    <img src={bot.avatar_url} alt=""/>
+                    <img key={bot.id} src={bot.avatar_url}alt="bot"/>
                     <h2>{bot.name}</h2>
-                    <p>Bot Health: {bot.health}</p>
-                    <p>Bot Damage: {bot.damage}</p>
-                    <p>Bot Armor: {bot.armor}</p>
-                    <p>Bot Class: {bot.bot_class}</p>
-                    <p className="catch">Catchphrase: {bot.catchphrase}</p>
+                    <p>Health: {bot.health}</p>
+                    <p>Damage: {bot.damage}</p>
+                    <p>Armor: {bot.armor}</p>
+                    <p>Bot class: {bot.bot_class}</p>
+                    <p>Catchphrase: {bot.catchphrase}</p>
                     <p>Created at: {bot.created_at}</p>
                     <p>Updated at: {bot.updated_at}</p>
-                    <button onClick={()=> releaseBot()}>Release Bot</button>
                 </div>
             ))}
         </div>

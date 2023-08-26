@@ -1,8 +1,19 @@
 const BotCollection = ({bots}) => {
 
-    const addBot = () => {
+    const addBot = (e) => {
         console.log('add')
+        e.preventDefault();
+        fetch('http://localhost:8001/my-bots', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify()
+            .then((res) => res.json())
+            .then((data) => console.log(data))
     }
+    )
+}
 
     
     const deleteBot = () => {
@@ -13,8 +24,8 @@ const BotCollection = ({bots}) => {
             <h1>BOT BATTLR</h1>
             <div className="botContainer">
             {bots.map((i) => (
-                 <div onClick={()=>addBot()}className="myBots"key={i.id} >
-                    <img src={i.avatar_url} alt=""/>
+                 <div onClick={(e)=>addBot(e)}className="myBots"key={i.id} >
+                    <img className="image" src={i.avatar_url} alt=""/>
                     <h2>{i.name}</h2>
                     <p>Bot Health: {i.health}</p>
                     <p>Bot Damage: {i.damage}</p>
@@ -30,4 +41,4 @@ const BotCollection = ({bots}) => {
         </div>
     )
 }
-export default BotCollection 
+export default BotCollection;

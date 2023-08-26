@@ -2,9 +2,8 @@ import NavBar from './Components/NavBar';
 import BotCollection from './Components/BotCollection';
 import BotArmy from './Components/BotArmy';
 import './App.css';
-import { Routes } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import  { useEffect, useState } from 'react';
-import { Route } from 'react-router-dom';
 
 function App() {
   const [ battlr, setBattlr ] = useState([])
@@ -19,8 +18,8 @@ function App() {
     <div>
       <NavBar />
       <Routes>
-        <Route path="/" element={<BotCollection bots={battlr}/>} />
-        <Route path="/botarmy" element={<BotArmy bots={battlr}/>} />
+        <Route exact path="/" element={<BotCollection bots={battlr}/>} />
+        <Route path="/myarmy" element={<BotArmy bots={battlr}/>} />
       </Routes>
       
     </div>

@@ -1,0 +1,14 @@
+#navbar {
+    margin-right: 0;
+    font-size: 2em;
+    margin-right: 20%;
+    justify-content: space-between;
+  }
+  .navigation-bar {
+    text-decoration: none;
+    justify-content: space-around;
+  }
+  #header {
+    width: 90%;
+  }
+  

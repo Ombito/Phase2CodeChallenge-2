@@ -37,7 +37,10 @@ h2 {
 }
 #addArmy {
   height: 5vh;
-  width: 26%;
+  width: 20%;
   border-radius: 5px;
   cursor: pointer;
+}
+.image {
+  height: 20vh;
 }
