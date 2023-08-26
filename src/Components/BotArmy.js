@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Card from './Card';
 
 const BotArmy = () => {
     const [ newbots, setNewbots ] = useState([])
@@ -9,19 +10,14 @@ const BotArmy = () => {
         .then((data) => setNewbots(data))
     }, [])
 
+    // if(!newbots.includes(data){
+    //     setNewbots(...newbots, 
+    // }
     return (
         <div>
             {newbots.map((bot) => (
-                <div>
-                    <img key={bot.id} src={bot.avatar_url}alt="bot"/>
-                    <h2>{bot.name}</h2>
-                    <p>Health: {bot.health}</p>
-                    <p>Damage: {bot.damage}</p>
-                    <p>Armor: {bot.armor}</p>
-                    <p>Bot class: {bot.bot_class}</p>
-                    <p>Catchphrase: {bot.catchphrase}</p>
-                    <p>Created at: {bot.created_at}</p>
-                    <p>Updated at: {bot.updated_at}</p>
+                <div key={bot.id}>
+                    <Card />
                 </div>
             ))}
         </div>

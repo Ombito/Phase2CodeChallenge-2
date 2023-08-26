@@ -1,6 +1,7 @@
 const BotCollection = ({bots}) => {
 
     const addBot = (e) => {
+        e.preventDefault();
         console.log('add')
         // let botObject = {
         //     "id"={bots.id}
@@ -14,29 +15,30 @@ const BotCollection = ({bots}) => {
         //     created_at=
         //     updated_at=
         }
-        e.preventDefault();
-        fetch('http://localhost:8001/my-bots', {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify()
-            .then((res) => res.json())
-            .then((data) => console.log(data))
-    }
-    )
-}
+        
+    //     fetch('http://localhost:8001/my-bots', {
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type": "application/json"
+    //         },
+    //         body: JSON.stringify()
+    //         .then((res) => res.json())
+    //         .then((data) => console.log(data))
+    // }
+    // )
 
     
     const deleteBot = () => {
         console.log('delete')
     }
+
+
     return (
         <div id="body">
             <h1>BOT BATTLR</h1>
             <div className="botContainer">
             {bots.map((i) => (
-                 <div onClick={(e)=>addBot(e)}className="myBots"key={i.id} >
+                 <div onClick={(e)=>addBot(e)} className="myBots"key={i.id} >
                     <img className="image" src={i.avatar_url} alt=""/>
                     <h2>{i.name}</h2>
                     <p>Bot Health: {i.health}</p>
