@@ -7,19 +7,22 @@ import  { useEffect, useState } from 'react';
 
 function App() {
   const [ battlr, setBattlr ] = useState([])
+
+
   useEffect (() => {
     fetch('http://localhost:8001/bots')
     .then(res => res.json())
     .then((data) => setBattlr(data))
   }, [])
 
+  
   return ( 
 
     <div>
       <NavBar />
       <Routes>
-        <Route exact path="/" element={<BotCollection bots={battlr}/>} />
-        <Route path="/myarmy" element={<BotArmy bots={battlr}/>} />
+        <Route exact path="/" element={<BotCollection bots={battlr} />} />
+        <Route path="/myarmy" element={<BotArmy />} />
       </Routes>
       
     </div>

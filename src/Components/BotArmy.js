@@ -2,22 +2,20 @@ import { useState, useEffect } from 'react';
 import Card from './Card';
 
 const BotArmy = () => {
-    const [ newbots, setNewbots ] = useState([])
-
+    const [ robots, setRobots ] = useState([])
+    
     useEffect(() => {
         fetch('http://localhost:8001/my-bots')
         .then(res => res.json())
-        .then((data) => setNewbots(data))
+        .then((data) => setRobots(data))
     }, [])
-
-    // if(!newbots.includes(data){
-    //     setNewbots(...newbots, 
-    // }
+    console.log(robots);
+   
     return (
         <div>
-            {newbots.map((bot) => (
+            {robots.map((bot) => (
                 <div key={bot.id}>
-                    <Card />
+                    <Card bot={bot} />
                 </div>
             ))}
         </div>
