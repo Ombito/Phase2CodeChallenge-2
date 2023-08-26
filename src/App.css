@@ -1,11 +1,43 @@
 h1 {
   text-align: center;
 }
-#myBots {
-  background-color:bisque;
+h2 {
+  text-align: center;
 }
-#botContainer {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+#body {
+  background-color: rgb(218, 232, 227);
+}
+.myBots {
+  background-color:bisque;
+  padding: 20px;
+  border-radius: 3px;
+  cursor: pointer;
+  width: 28%;
+  overflow-x: hidden;
+}
+.botContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  margin-left: 5%;
+}
+.catch {
+  width: 10%;
+}
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+#delete {
+  background-color: red;
+  height: 5vh;
+  width: 20%;
+  border-radius: 10px;
+  cursor: pointer;
+}
+#addArmy {
+  height: 5vh;
+  width: 26%;
+  border-radius: 5px;
+  cursor: pointer;
 }

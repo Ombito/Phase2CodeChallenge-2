@@ -11,13 +11,13 @@ function App() {
     .then(res => res.json())
     .then((data) => setBattlr(data))
   }, [])
-  
+
   return ( 
 
     <div>
       <NavBar />
       <BotCollection bots={battlr}/>
-      <BotArmy />
+      <BotArmy bots={battlr}/>
     </div>
   );
 }
