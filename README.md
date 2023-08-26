@@ -22,7 +22,7 @@ To get started with Bot Battlr, follow these steps:
 3. Start the local server running JSON DB server.
 4. Run the app.
 5. Open the index.html file in your preferred web browser.
-6. 
+
 
 ## Technologies
 This project uses the following technologies:
