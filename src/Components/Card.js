@@ -1,29 +1,26 @@
 import { useState } from 'react';
 
-const Card = ({ bot, handleDelete }) => {
-    const [ mybots, setMybots] = useState([])
-    const myId = bot.map((i) => i.id)
-    console.log(myId)
+const Card = ({ bot }) => {
+    const [ mybots, setMybots] = useState(bot);
 
-    //delete card from my army list
-    const onDelete = () => {
-    
-        let del = window.confirm("Do you want to release the bot?")
-        if(del){
-            fetch(`http://localhost:8001/my-bots/${myId}`, {
+    //delete bot from my army list
+    const handleDelete = (id) => {
+        console.log(id);
+
+        let del = window.confirm("Do you want to release the bot?");   
+        if (del) {
+            fetch(`http://localhost:8001/my-bots/${id}`, {
                 method: "DELETE",
             })
-            setMybots(handleDelete)
-            }
+            .then(() => setMybots(mybots.filter((bot) => bot.id !== id)))
+            .catch(error => console.error("Error deleting bot:", error));
         }
-    
-    console.log("Bot data:", bot)
+    }
 
     return (
         <div>
-            {bot.map((i)=> {
-                return (
-                <div className="myrobots" onClick={onDelete} key="i.id" >
+            {mybots.map((i) => (
+                <div className="myrobots" onClick={() => handleDelete(i.id)} key={i.id}>
                     <img className="image" src={i.avatar_url} alt=""/>
                     <h2>{i.name}</h2>
                     <p>Bot Health: {i.health}</p>
@@ -33,10 +30,10 @@ const Card = ({ bot, handleDelete }) => {
                     <p className="catch">Catchphrase: {i.catchphrase}</p>
                     <p>Created at: {i.created_at}</p>
                     <p>Updated at: {i.updated_at}</p>
-                </div>)
-            })}
-           
+                </div>
+            ))}
         </div>
-    )
+    );
 }
+
 export default Card;

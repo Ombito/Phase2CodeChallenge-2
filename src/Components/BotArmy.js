@@ -12,11 +12,11 @@ const BotArmy = () => {
     }, [])
     console.log(robots);
     
-    //on delete set state 
+    //on delete change state 
     const deleteRobots = (id) => {
-        const getBots = robots.filter((b) => robots.id !==  id)
-        setRobots(getBots);
-    };
+        const myUpdatedBots = robots.filter(bot => bot.id !== id)
+        setRobots(myUpdatedBots)
+      }
 
     return (
         <>

@@ -1,55 +1,63 @@
 import { useState } from 'react';
 import './BotCollection.css';
 
-const BotCollection = ({ bots }) => {
+const BotCollection = ({ bots, handleDelete }) => {
 
     const [ army, setArmy ] = useState([])
 
     //onclick event post data to server
-    const addBot = (bots)=> {
-        console.log('Add bot')
-        alert('Bot added to my collection')
-        setArmy([...army, bots ]);
+    const addBot = (bot) => {
+        console.log('Add bot');
+        alert('Bot added to my collection');
+        setArmy([...army, bot]);
     
-    fetch('http://localhost:8001/my-bots', {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify([bots]),
-    })
-    setArmy([...army, bots])
-}
+        fetch('http://localhost:8001/my-bots', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify([bot]),
+        })
+        setArmy([...army, bot]);
+    }
 
-    //onclick delete data from bot collection list
-    const deleteBot = () => {
-        console.log('delete')
-            fetch(`http://localhost:3000/bots/${bots.id}`, {
-                method: 'DELETE'
-            })
-            setArmy(prevArmy => prevArmy.filter(bot => bots.id !== bot.id));
-        };
+    // onclick delete bot from bot collection list
+    const deleteBot = (id) => {
+        console.log('delete...');
+        
+        let discharge = window.confirm("This bot will be discharged forever, do you wish to continue?"); 
+        if (discharge){
+            fetch(`http://localhost:8001/my-bots/${id}`, {
+            method: "DELETE",
+        })
+        .then(() => handleDelete(id))
+        .catch(error => console.error("Error deleting bot:", error));
+        }     
+    }
 
     return (
         <div id="body">
             <h1>BOT BATTLR</h1>
             <div className="botContainer">
-            {bots.map((i) => (
-                 <div onClick={()=>addBot(i)} className="myBots"key={i.id} >
-                    <img className="image" src={i.avatar_url} alt=""/>
-                    <h2>{i.name}</h2>
-                    <p>Bot Health: {i.health}</p>
-                    <p>Bot Damage: {i.damage}</p>
-                    <p>Bot Armor: {i.armor}</p>
-                    <p>Bot Class: {i.bot_class}</p>
-                    <p className="catch">Catchphrase: {i.catchphrase}</p>
-                    <p>Created at: {i.created_at}</p>
-                    <p>Updated at: {i.updated_at}</p>
-                    <button id="delete" onClick={()=> deleteBot(i.id)}>X</button>
-                </div>
-        ))}
+                {bots.map((bot) => (
+                    <div className="myBots" key={bot.id}>
+                        <div onClick={() => addBot(bot)}>
+                            <img className="image" src={bot.avatar_url} alt=""/>
+                            <h2>{bot.name}</h2>
+                            <p>Bot Health: {bot.health}</p>
+                            <p>Bot Damage: {bot.damage}</p>
+                            <p>Bot Armor: {bot.armor}</p>
+                            <p>Bot Class: {bot.bot_class}</p>
+                            <p className="catch">Catchphrase: {bot.catchphrase}</p>
+                            <p>Created at: {bot.created_at}</p>
+                            <p>Updated at: {bot.updated_at}</p>
+                        </div>
+                        <button id="delete" onClick={() => deleteBot(bot.id)}>X</button>
+                    </div>
+                ))}
+            </div>
         </div>
-        </div>
-    )
+    );
 }
+
 export default BotCollection;
