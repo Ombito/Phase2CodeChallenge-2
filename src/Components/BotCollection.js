@@ -25,7 +25,6 @@ const BotCollection = ({ bots }) => {
     }
 
 
-
     return (
         <div id="body">
             <h1>BOT BATTLR</h1>
