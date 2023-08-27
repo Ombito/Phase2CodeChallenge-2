@@ -15,13 +15,13 @@ function App() {
     .then((data) => setBattlr(data))
   }, [])
 
-  
+
   return ( 
 
     <div>
       <NavBar />
       <Routes>
-        <Route exact path="/" element={<BotCollection bots={battlr} />} />
+        <Route exact path="/" element={<BotCollection bots={battlr.map((i)=> i)} />} />
         <Route path="/myarmy" element={<BotArmy />} />
       </Routes>
       

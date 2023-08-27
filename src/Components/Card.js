@@ -1,20 +1,19 @@
 import { useState } from 'react';
 
-const Card = ({ bot }) => {
-const myId = bot.map((i) => i.id)
-console.log(myId)
-    const [ mybots, setMybots] = useState(bot)
-    const handleDelete = (botToDelete) => {
+const Card = ({ bot, handleDelete }) => {
+    const [ mybots, setMybots] = useState([])
+    const myId = bot.map((i) => i.id)
+    console.log(myId)
+
+    //delete card from my army list
+    const onDelete = () => {
     
-            console.log(botToDelete);
-            let del = window.confirm("Do you want to release the bot?")
-            if(del){
-                fetch(`http://localhost:8001/my-bots/${myId}`, {
-                    method: "DELETE",
+        let del = window.confirm("Do you want to release the bot?")
+        if(del){
+            fetch(`http://localhost:8001/my-bots/${myId}`, {
+                method: "DELETE",
             })
-            .then(() => { 
-                setMybots(mybots.filter((bot) => bot.id !== myId))
-            })
+            setMybots(handleDelete)
             }
         }
     
@@ -24,7 +23,7 @@ console.log(myId)
         <div>
             {bot.map((i)=> {
                 return (
-                <div className="myrobots" onClick={handleDelete} key="i.id" >
+                <div className="myrobots" onClick={onDelete} key="i.id" >
                     <img className="image" src={i.avatar_url} alt=""/>
                     <h2>{i.name}</h2>
                     <p>Bot Health: {i.health}</p>

@@ -4,6 +4,8 @@ import './BotCollection.css';
 const BotCollection = ({ bots }) => {
 
     const [ army, setArmy ] = useState([])
+
+    //onclick event post data to server
     const addBot = (bots)=> {
         console.log('Add bot')
         alert('Bot added to my collection')
@@ -16,15 +18,17 @@ const BotCollection = ({ bots }) => {
         },
         body: JSON.stringify([bots]),
     })
-    .then((res) => res.json())
-    .then((data) => setArmy([...army, bots]))
-
+    setArmy([...army, bots])
 }
-    
+
+    //onclick delete data from bot collection list
     const deleteBot = () => {
         console.log('delete')
-    }
-
+            fetch(`http://localhost:3000/bots/${bots.id}`, {
+                method: 'DELETE'
+            })
+            setArmy(prevArmy => prevArmy.filter(bot => bots.id !== bot.id));
+        };
 
     return (
         <div id="body">
@@ -41,7 +45,7 @@ const BotCollection = ({ bots }) => {
                     <p className="catch">Catchphrase: {i.catchphrase}</p>
                     <p>Created at: {i.created_at}</p>
                     <p>Updated at: {i.updated_at}</p>
-                    <button id="delete" onClick={()=> deleteBot()}>X</button>
+                    <button id="delete" onClick={()=> deleteBot(i.id)}>X</button>
                 </div>
         ))}
         </div>
