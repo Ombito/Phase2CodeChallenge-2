@@ -13,13 +13,16 @@ const BotArmy = () => {
     
     
     return (
-        <div>
+        <>
+        <h2>My Robot Army</h2>
+        <div className="myarmycards">
             {robots.map((bot) => (
                 <div key={bot.id}>
                     <Card bot={bot} />
                 </div>
             ))}
         </div>
+        </>
     )
 }
 export default BotArmy;

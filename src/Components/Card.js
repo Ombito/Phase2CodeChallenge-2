@@ -24,7 +24,7 @@ console.log(myId)
         <div>
             {bot.map((i)=> {
                 return (
-                <div onClick={handleDelete} key="i.id">
+                <div className="myrobots" onClick={handleDelete} key="i.id" >
                     <img className="image" src={i.avatar_url} alt=""/>
                     <h2>{i.name}</h2>
                     <p>Bot Health: {i.health}</p>

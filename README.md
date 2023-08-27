@@ -1,6 +1,6 @@
 # Bot Battlr
 
-Welcome to Bot Battlr, the one and only spot in the known universe where you can custom build your own Bot Army! 
+Welcome to Bot Battlr, the one and only spot in the known universe where you can custom build your own Bot Army! [](./src/Components/Images/WhatsApp%20Image%202023-08-27%20at%2018.26.24.jpeg)
 
 ## Features
 

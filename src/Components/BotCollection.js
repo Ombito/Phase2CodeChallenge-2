@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './BotCollection.css';
 
 const BotCollection = ({ bots }) => {
 
