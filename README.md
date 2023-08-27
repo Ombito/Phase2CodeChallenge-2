@@ -8,7 +8,9 @@ The user interface of Bot Battlr is designed to be intuitive and easy to use. As
 
 1. Browse through a list of robots, 
 2. View a robot's details.
-3. Enlist a bot into your army by clicking on a button. 
+3. Enlist a bot into your army by clicking on the bot.
+4. Release the bot from your army by clicking on the bot.
+5. Discharge a bot from their service forever by clicking the red button marked "x".
    
 The app fetches data from a local server running JSON DB server.
 
