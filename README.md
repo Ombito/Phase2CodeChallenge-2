@@ -2,7 +2,7 @@
 
 Welcome to Bot Battlr, the one and only spot in the known universe where you can custom build your own Bot Army! 
 
-![](./src/Components/Images/WhatsApp%20Image%202023-08-27%20at%2018.26.24.jpeg)
+![](./src/Components/Images/robot.jpeg)
 
 ## Features
 
@@ -23,7 +23,7 @@ To get started with Bot Battlr, follow these steps:
 
 1. Clone the repository from GitHub.
 2. Install the required dependencies.
-3. Start the local server running JSON DB server.
+3. Start the local server running JSON DB server on port 8001 `http://localhost:8001/my-bots`.
 4. Run the app.
 5. Open the index.html file in your preferred web browser.
 
