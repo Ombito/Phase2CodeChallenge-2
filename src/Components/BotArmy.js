@@ -11,27 +11,12 @@ const BotArmy = () => {
     }, [])
     console.log(robots);
     
-    const onDeleteBot = (robot) => {
-        //const myNewBots = robots.filter((i) => i !== robot)
-        //setRobots(myNewBots);
     
-
-        console.log(robot);
-        let del = window.confirm("Do you want to release the bot?")
-        if(del){
-            fetch(`http://localhost:8001/my-bots/${robot}`, {
-                method: "DELETE",
-        })
-        .then(() => { 
-            setRobots(robots.filter((bot) => bot.id !== robots))
-        })
-        }
-    }
     return (
         <div>
             {robots.map((bot) => (
                 <div key={bot.id}>
-                    <Card bot={bot} onDelete={onDeleteBot}/>
+                    <Card bot={bot} />
                 </div>
             ))}
         </div>
